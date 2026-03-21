@@ -4,8 +4,8 @@ set -e
 
 # Show usage if no argument
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 [python|java|ts|all]"
-    exit 1
+    echo "Usage: source /tmp/dotfiles/bootstrap.sh [python|java|ts|all]"
+    exit 0
 fi
 
 # Store requested modules
