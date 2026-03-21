@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:trixie-slim AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm-256color
@@ -23,11 +23,15 @@ RUN apt-get update && apt-get install -y \
 	gradle \
     && rm -rf /var/lib/apt/lists/*
 
+RUN git clone https://github.com/natanasov94/dotfiles /tmp/dotfiles
+
 # ---- Neovim ----
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
 		rm -rf /opt/nvim-linux-x86_64 && \
 		tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ENV PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+RUN ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
+RUN mv /tmp/dotfiles/nvim /root/.config/nvim
 
 # ---- Node / TS LSP ----
 RUN npm install -g \
