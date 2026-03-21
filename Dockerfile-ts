@@ -1,0 +1,35 @@
+FROM debian:trixie-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm-256color
+
+# ---- Base system ----
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    wget \
+    build-essential \
+    ca-certificates \
+    nodejs \
+    npm \
+    tmux \
+    && rm -rf /var/lib/apt/lists/*
+
+# ---- Neovim ----
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
+		rm -rf /opt/nvim-linux-x86_64 && \
+		tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+ENV PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+RUN ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
+COPY ./nvim /root/.config/nvim
+RUN echo 'set -g default-terminal "tmux-256color"' >> /root/.tmux.conf
+RUN echo 'set -ga terminal-overrides ",*:Tc"' >> /root/.tmux.conf
+
+# ---- Node / TS LSP ----
+RUN npm install -g \
+    typescript \
+    typescript-language-server \
+    prettier
+
+CMD ["bash"]
