@@ -18,7 +18,7 @@ Then source it
 ```sh
 source /tmp/dotfiles/bootstrap.sh
 ```
-And finally refresh the shell script
+And finally refresh the shell
 ```sh
 exec bash
 ```
