@@ -81,3 +81,4 @@ for module in "${MODULES[@]}"; do
             ;;
     esac
 done
+nvim --headless +Lazy! +qa
