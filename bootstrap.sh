@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 # Show usage if no argument
 if [ $# -eq 0 ]; then
     echo "Usage: source /tmp/dotfiles/bootstrap.sh [python|java|ts|all]"
@@ -40,7 +38,7 @@ ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 # --- Tmux ---
 cp -r /tmp/dotfiles/nvim ~/.config/nvim
 cp -r /tmp/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-cp -r /tmp/dotfiles/starship.toml ~/starship.toml
+cp -r /tmp/dotfiles/arch/starship.toml ~/starship.toml
 # --- Tmux theme ---
 mkdir -p ~/.config/tmux/plugins/catppuccin
 git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
@@ -83,4 +81,3 @@ for module in "${MODULES[@]}"; do
             ;;
     esac
 done
-set +e
