@@ -174,7 +174,7 @@ setup_dynamic_statusline()
 -- Plugins
 require("config.lazy")
 -- Theme
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "tokyonight-night"
 -- LSP
 vim.lsp.enable('pyright')
 vim.lsp.enable('ts_ls')
