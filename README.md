@@ -18,5 +18,9 @@ Then source it
 ```sh
 source /tmp/dotfiles/bootstrap.sh
 ```
+And finally refresh the shell script
+```sh
+exec bash
+```
 
 This will install all needed packages for the languages i am currently using

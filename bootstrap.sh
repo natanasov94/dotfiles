@@ -49,7 +49,7 @@ install_python() {
         python3 \
         python3-pip
 
-    pip install -break-system-packages \
+    pip install --break-system-packages \
         pyright \
         black
 }
@@ -82,3 +82,4 @@ for module in "${MODULES[@]}"; do
             ;;
     esac
 done
+set +e
