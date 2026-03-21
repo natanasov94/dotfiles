@@ -35,16 +35,18 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Should i just install it in /usr/local/bin instead of how the installer does it? (shrugs)
 ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 
+# --- Bash ---
+cp /tmp/dotfiles/arch/.bashrc ~/.bashrc
+
 # --- Tmux ---
 cp -r /tmp/dotfiles/nvim ~/.config/nvim
-cp -r /tmp/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+cp /tmp/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 # --- Tmux theme ---
 mkdir -p ~/.config/tmux/plugins/catppuccin
 git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 
 # --- Starship ---
-cp -r /tmp/dotfiles/arch/starship.toml ~/.config/starship.toml
-eval "$(starship init bash)"
+cp /tmp/dotfiles/arch/starship.toml ~/.config/starship.toml
 
 # --- LSP functions for nvim --
 install_python() {
