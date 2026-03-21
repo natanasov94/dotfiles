@@ -38,11 +38,15 @@ ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 # --- Tmux ---
 cp -r /tmp/dotfiles/nvim ~/.config/nvim
 cp -r /tmp/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-cp -r /tmp/dotfiles/arch/starship.toml ~/.config/starship.toml
 # --- Tmux theme ---
 mkdir -p ~/.config/tmux/plugins/catppuccin
 git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 
+# --- Starship ---
+cp -r /tmp/dotfiles/arch/starship.toml ~/.config/starship.toml
+eval "$(starship init bash)"
+
+# --- LSP functions for nvim --
 install_python() {
     apt-get install -y \
         python3 \
@@ -68,7 +72,6 @@ install_java() {
 }
 
 # --- Install modules ---
-
 for module in "${MODULES[@]}"; do
     case "$module" in
         python) install_python ;;
@@ -81,4 +84,6 @@ for module in "${MODULES[@]}"; do
             ;;
     esac
 done
+
+# Preload all plugins in nvim
 nvim --headless +Lazy! +qa
