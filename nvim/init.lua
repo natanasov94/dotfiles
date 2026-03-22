@@ -173,6 +173,9 @@ setup_dynamic_statusline()
 
 -- Plugins
 require("config.lazy")
+require("lazy").setup({
+  {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"}
+})
 -- Theme
 vim.cmd.colorscheme "tokyonight-night"
 -- LSP
