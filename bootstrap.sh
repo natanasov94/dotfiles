@@ -22,7 +22,8 @@ apt-get install -y \
     unzip \
     wget \
     tmux \
-    starship
+    starship \
+    gcc
 
 mkdir -p ~/.config
 
