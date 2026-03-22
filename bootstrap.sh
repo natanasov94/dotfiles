@@ -23,7 +23,8 @@ apt-get install -y \
     wget \
     tmux \
     starship \
-    gcc
+    gcc \
+    tree-sitter-cli
 
 mkdir -p ~/.config
 
